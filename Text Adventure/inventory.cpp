@@ -1,7 +1,5 @@
 #include "inventory.h"
 
-
-
 Inventory::Inventory()
 {
 }
@@ -14,14 +12,14 @@ Inventory::~Inventory()
 void Inventory::addWeapon(String name, weaponType wepType, ElementalDamage element, int damage)
 {
 	bool Collected = false;
-	/*for (items* item : m_ItemList)
+	for (Item* item : m_ItemList)
 	{
-		if (item->getName() == name && item->getDamage() == damage)
+		if (item->getName() == name)
 		{
 			Collected = true;
 			break;
 		}
-	}*/
+	}
 	if (!Collected)
 	{
 		m_ItemList.push_back(new Weapon(name, wepType, element, damage));
@@ -31,25 +29,25 @@ void Inventory::addWeapon(String name, weaponType wepType, ElementalDamage eleme
 		std::cout << "already have that weapon, no need for 2 that is just greedy!\n";
 	}
 }
-//void inventory::addPotion(String name, int stack)
+//void inventory::addpotion(string name, int stack)
 //{
-//	bool Collected = false;
-//	items* tempItem;
-//	for (items* item : m_ItemList)
+//	bool collected = false;
+//	items* tempitem;
+//	for (items* item : m_itemlist)
 //	{
-//		if (item->getName() == name)
+//		if (item->getname() == name)
 //		{
-//			Collected = true;
-//			tempItem = item;
+//			collected = true;
+//			tempitem = item;
 //			break;
 //		}
 //	}
-//	if (!Collected)
+//	if (!collected)
 //	{
-//		m_ItemList.push_back(new potion(name, stack));
+//		m_itemlist.push_back(new potion(name, stack));
 //	}
 //	else
 //	{
-//		tempItem->changePotionStack(stack);
+//		tempitem->changepotionstack(stack);
 //	}
 //}

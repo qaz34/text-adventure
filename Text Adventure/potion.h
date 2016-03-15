@@ -10,7 +10,6 @@ public:
 	Potion(String name, int stack) : Item(name) {
 		m_stack = stack;
 	};
-	Potion();
 	~Potion();
 	virtual void usePotion() {
 		if (m_stack > 0)
@@ -18,10 +17,6 @@ public:
 			m_stack--;
 			m_healing++;
 		}
-		else {
-
-		}
-
 	}
 
 };

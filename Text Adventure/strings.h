@@ -41,6 +41,6 @@ public:
 		char temp[256];
 		std::cin.getline(temp, 256);
 		*this = temp;
-		return temp;
+		return m_string;
 	}
 };
