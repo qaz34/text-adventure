@@ -25,9 +25,9 @@ public:
 	Weapon(String name, weaponType wepType, ElementalDamage element, int damage) : Item(name) {
 		m_type = wepType;
 		m_element = element;
-		m_damage = 10;
+		m_damage = damage;
 	};
-	virtual void use(Character* target);
+	virtual void use(Character& target);
 	~Weapon();
 
 };

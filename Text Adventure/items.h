@@ -12,6 +12,6 @@ public:
 	}
 	String getName() { return m_name; };
 	~Item();
-	virtual void use(Character*) = 0;
+	virtual void use(Character &target) = 0;
 };
 
