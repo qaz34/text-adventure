@@ -4,13 +4,18 @@
 #include "strings.h"
 #include <iostream>
 using namespace std;
+void quickTest(ElementalDamage * test) {
+
+}
 int main()
 {
 	String testString;
-	Character player(100, testString.Returnline());
+	Character player(100000, 10, testString.Returnline(), { ElementalDamage::PHYSICAL});
 	while (true)
 	{
-		player.addWeapon("basic sword", weaponType::MELEE, ElementalDamage::PHYSICAL, 10);
+		player.addWeapon("basic sword", weaponType::MELEE, ElementalDamage::PHYSICAL, 1000);
+		player.equipItem("basic sword");
+		player.attack(player);
 		system("PAUSE");
 	}
     return 0;
