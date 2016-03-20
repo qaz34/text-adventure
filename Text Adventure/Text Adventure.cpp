@@ -10,7 +10,7 @@ void quickTest(ElementalDamage * test) {
 int main()
 {
 	String testString;
-	Character player(100000, 10, testString.Returnline(), { ElementalDamage::PHYSICAL});
+	Character player(10, testString.Returnline());
 	while (true)
 	{
 		player.addWeapon("basic sword", weaponType::MELEE, ElementalDamage::PHYSICAL, 1000);
@@ -20,4 +20,3 @@ int main()
 	}
     return 0;
 }
-

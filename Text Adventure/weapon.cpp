@@ -5,5 +5,5 @@ Weapon::~Weapon()
 }
 
 void Weapon::use(Character* target) {
-	target->changeHealth({m_damage, m_element, m_type});
+	target->changeHealth(m_info);
 }

@@ -38,8 +38,8 @@ public:
 		*this = temp;
 	}
 	String Returnline() {
-		char temp[256];
-		std::cin.getline(temp, 256);
+		char temp[40];
+		std::cin.getline(temp, 40);
 		*this = temp;
 		return *this;
 	}
