@@ -1,43 +1,45 @@
 #pragma once
 #include "strings.h"
 #include "inventory.h"
+#include <cmath>
 #include <iostream>
+const float constantLvl = 0.14;
+
+typedef std::vector<ElementalDamage> resistanceList;
 class Character
 {
 protected:
 	String m_name;
+
 	int m_health, m_armor;
 	float m_armorReduction;
 	std::vector<ElementalDamage*> m_resistances;
+
+	float m_constantHealth;
+	int m_health, m_level, m_exp;
+	Inventory m_inventory;
+
 public:
 	Inventory m_inventory;
 	void addWeapon(String name, weaponType wepType, ElementalDamage element, int damage) {
 		m_inventory.addWeapon(name, wepType, element, damage);
 	}
-	void addPotion(String name, int stack) {
-		m_inventory.addPotion(name, stack);
+	void addArmor(String name, armorType armType, defenseInfo dInfo) {
+		m_inventory.addArmor(name, armType, dInfo);
 	}
-	virtual void changeHealth(int ammount);
-	void takeDamage(int ammount, ElementalDamage type) {
-		int counter = 0;
-		for (ElementalDamage* element : m_resistances)
+	void equipItem(String name) {
+		if (m_inventory.getItem(name) != nullptr)
 		{
-			if (*element == type)
-			{
-				m_health -= (int)((ammount * (1 - m_armorReduction))/2);
-			}
-			else {
-				counter++;
-			}
-		}
-		if (counter == m_resistances.size())
-		{
-			m_health -= ammount * (1 - m_armor);
+			m_inventory.equipItem(name);
 		}
 	}
-	Character(int health, int armor, String name);
-	Character(int health, int armor, String name, std::vector<ElementalDamage> resistances);
+	void changeHealth(damageInfo dInfo);
+	void attack(Character& target);
+	Character(int health, String name);
+	Character(int health, String name, int exp);
+	void gainExp(int exp);
+	/*level = constant * sqrt(XP)*/
 	Character() {}
 	~Character();
+	
 };
-

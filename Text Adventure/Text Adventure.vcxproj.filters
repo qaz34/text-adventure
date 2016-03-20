@@ -51,10 +51,10 @@
     <ClInclude Include="strings.h">
       <Filter>Header Files\String</Filter>
     </ClInclude>
-    <ClInclude Include="potion.h">
+    <ClInclude Include="weapon.h">
       <Filter>Header Files\Inventory</Filter>
     </ClInclude>
-    <ClInclude Include="weapon.h">
+    <ClInclude Include="Armor.h">
       <Filter>Header Files\Inventory</Filter>
     </ClInclude>
   </ItemGroup>
@@ -80,10 +80,10 @@
     <ClCompile Include="strings.cpp">
       <Filter>Source Files\String</Filter>
     </ClCompile>
-    <ClCompile Include="potion.cpp">
+    <ClCompile Include="weapon.cpp">
       <Filter>Source Files\Inventory</Filter>
     </ClCompile>
-    <ClCompile Include="weapon.cpp">
+    <ClCompile Include="Armor.cpp">
       <Filter>Source Files\Inventory</Filter>
     </ClCompile>
   </ItemGroup>

@@ -4,9 +4,10 @@
 
 String::String() {
 	m_string = nullptr;
-	m_string = new char[0];
+	m_string = new char[1];
 	m_size = 0;
 	m_capacity = 0;
+	m_string[0] = '\0';
 }
 
 String::String(char input[]) {
@@ -97,20 +98,19 @@ void String::resize(int newSize)
 {
 	String temp(newSize);
 	strcpy(temp.m_string, m_string);
+	temp.m_size = strlen(m_string);
 	*this = temp;
 }
 
 void String::operator=(char string[])
 {
 	int length = strlen(string);
-	if (length >= m_capacity) {
+	if (m_capacity <= length) {
 		resize(length);
-		strcpy(m_string, string);
 	}
-	else {
 		m_size = length;
 		strcpy(m_string, string);
-	}
+	
 }
 void String::operator=(String & other)
 {

@@ -37,10 +37,10 @@ public:
 		std::cin.getline(temp, 256);
 		*this = temp;
 	}
-	char* Returnline() {
-		char temp[256];
-		std::cin.getline(temp, 256);
+	String Returnline() {
+		char temp[40];
+		std::cin.getline(temp, 40);
 		*this = temp;
-		return m_string;
+		return *this;
 	}
 };
