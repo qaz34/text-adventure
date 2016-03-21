@@ -6,7 +6,7 @@ String::String() {
 	m_string = nullptr;
 	m_string = new char[1];
 	m_size = 0;
-	m_capacity = 0;
+	m_capacity = 1;
 	m_string[0] = '\0';
 }
 
@@ -36,7 +36,6 @@ String::String(String & other)
 
 String::~String()
 {
-	m_string = nullptr;
 	delete[]m_string;
 }
 
@@ -131,7 +130,7 @@ void String::operator+=(const String & other)
 		resize(m_size + other.m_size);
 	}
 		strcat(m_string, other.m_string);
-
+		m_size = strlen(m_string);
 }
 void String::operator+=(const char* other)
 {
@@ -140,6 +139,7 @@ void String::operator+=(const char* other)
 		resize(m_size + strlen(other));
 	}
 	strcat(m_string, other);
+	m_size = strlen(m_string);
 }
 
 String String::operator+(const String & other)
@@ -199,12 +199,13 @@ void String::subStringReplace(const char * subString, char* replacement)
 			}
 			temp3p[0].resize(m_size + repLen - subLen);
 			temp3p[0] = m_string;
-			temp3p[0].m_string[tempNum] = '\0';
+			*temp3p[0][tempNum] = '\0';
 			temp3p[0].m_size = tempNum;
 			temp3p[1] = replacement;
 			temp3p[2].resize(m_size + 1);
 			temp3p[2].m_size = 0;
-			temp3p[2].m_string = temp + subLen;
+			char* quickTemp = temp + subLen;
+			temp3p[2] = quickTemp;
 			temp3p[2].m_size = temp3p[2].Length();
 			temp3p[0] += replacement;
 			temp3p[0].m_string[tempNum + repLen] = '\0';
@@ -226,5 +227,4 @@ String operator + (char lhs[], String rhs) {
 	String temp(lhs);
 	temp += rhs;
 	return temp;
-	
 }

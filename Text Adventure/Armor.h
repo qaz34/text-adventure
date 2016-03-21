@@ -1,6 +1,6 @@
 #pragma once
 #include "items.h"
-#include "strings.h"
+#include "Strings.h"
 
 enum class armorType
 {

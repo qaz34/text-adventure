@@ -12,7 +12,13 @@ Inventory::Inventory()
 
 Inventory::~Inventory()
 {
-	
+	for (Item* item : m_ItemList)
+	{
+		delete item;
+	}
+	for (int i = 0; i < 6; ++i) {
+		delete m_Equiptment[i];
+	}
 }
 
 void Inventory::addWeapon(String name, weaponType wepType, ElementalDamage element, int damage)

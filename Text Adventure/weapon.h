@@ -1,6 +1,6 @@
 #pragma once
 #include "items.h"
-#include "strings.h"
+#include "Strings.h"
 
 enum class weaponType
 {
@@ -28,7 +28,7 @@ public:
 		m_info.m_element = element;
 		m_info.m_damage = damage;
 	};
-	virtual void use(Character* target);
+	virtual void use(Character& target);
 	virtual defenseInfo getInfo() {
 		defenseInfo temp{ 0, {} };
 		return temp;

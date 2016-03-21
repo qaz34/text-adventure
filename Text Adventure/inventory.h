@@ -1,5 +1,5 @@
 #pragma once
-#include "strings.h"
+#include "Strings.h"
 #include "items.h"
 #include "weapon.h"
 #include "armor.h"
