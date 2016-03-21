@@ -2,11 +2,11 @@
 
 
 
-Armor::Armor(String name, int armor, resistanceList resistances, armorType type) : Item(name, (int)type)
+Armor::Armor(String name, armorType type, defenseInfo dInfo) : Item(name, (int)type)
 {
-	m_info.m_armor = armor;
+	m_info.m_armor = dInfo.m_armor;
 	
-	for (ElementalDamage resistance : resistances) {
+	for (ElementalDamage resistance : dInfo.m_resistances) {
 		m_info.m_resistances.push_back(resistance);
 	}
 }

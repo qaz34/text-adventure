@@ -1,18 +1,25 @@
 #pragma once
 #include "strings.h"
 #include "inventory.h"
+#include <cmath>
 #include <iostream>
+const float constantLvl = 0.14;
+
 typedef std::vector<ElementalDamage> resistanceList;
 class Character
 {
 protected:
 	String m_name;
-	int m_health;
+	float m_constantHealth;
+	int m_health, m_level, m_exp;
 	Inventory m_inventory;
 
 public:
 	void addWeapon(String name, weaponType wepType, ElementalDamage element, int damage) {
 		m_inventory.addWeapon(name, wepType, element, damage);
+	}
+	void addArmor(String name, armorType armType, defenseInfo dInfo) {
+		m_inventory.addArmor(name, armType, dInfo);
 	}
 	void equipItem(String name) {
 		if (m_inventory.getItem(name) != nullptr)
@@ -23,6 +30,9 @@ public:
 	void changeHealth(damageInfo dInfo);
 	void attack(Character& target);
 	Character(int health, String name);
+	Character(int health, String name, int exp);
+	void gainExp(int exp);
+	/*level = constant * sqrt(XP)*/
 	Character() {}
 	~Character();
 	

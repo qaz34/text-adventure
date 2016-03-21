@@ -19,6 +19,7 @@ public:
 	Inventory();
 	~Inventory();
 	void addWeapon(String name, weaponType wepType, ElementalDamage element, int damage);
+	void addArmor(String name, armorType armType, defenseInfo dInfo);
 	void equipItem(String itemName);
 	Item* getItem(int itemNameID);
 	Item* getItem(String itemName);

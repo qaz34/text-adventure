@@ -36,6 +36,30 @@ Character::Character(int health, String name)
 {
 	m_health = health;
 	m_name = name;
+	m_level = 1;
+	m_exp = 0;
+	m_constantHealth = pow(m_level / sqrt(m_health), 2);
+}
+
+Character::Character(int health, String name, int exp) : Character(health, name)
+{
+	m_exp = exp;
+	m_level = floor(constantLvl * sqrt(m_exp));
+	m_constantHealth = m_level / sqrt(m_health);
+}
+
+void Character::gainExp(int exp)
+{
+	m_exp += exp;
+	int newLevel = floor(constantLvl * sqrt(exp));
+	if (m_level <= newLevel)
+	{
+		m_health = floor(pow(newLevel / m_constantHealth, 2));
+	}
+	else if (newLevel == 0) {
+		m_level = 1;
+		m_health = floor(pow(m_level / m_constantHealth, 2));
+	}
 }
 
 Character::~Character()
