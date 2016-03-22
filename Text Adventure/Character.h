@@ -6,7 +6,7 @@
 const float constantLvl = 0.31;
 
 typedef std::vector<ElementalDamage> resistanceList;
-class Character
+class Character 
 {
 protected:
 	String m_name;
@@ -31,6 +31,7 @@ public:
 	bool isDead() { return m_health == 0; }
 	void changeHealth(damageInfo dInfo);
 	void attack(Character& target);
+	String name() { return m_name; }
 	int getLevel() { return m_level; }
 	Character(int health, String name);
 	Character(int health, String name, int exp);
@@ -38,5 +39,5 @@ public:
 	/*level = constant * sqrt(XP)*/
 	Character() {}
 	~Character();
-	
+
 };

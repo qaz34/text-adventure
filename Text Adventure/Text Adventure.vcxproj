@@ -149,6 +149,7 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="inventory.h" />
     <ClInclude Include="items.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Strings.h" />
@@ -160,6 +161,7 @@
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="inventory.cpp" />
     <ClCompile Include="items.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Strings.cpp" />

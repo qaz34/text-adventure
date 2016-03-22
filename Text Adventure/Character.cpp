@@ -29,6 +29,7 @@ void Character::attack(Character & target)
 	m_inventory.getEquipItem(5)->use(target);
 }
 
+
 Character::Character(int health, String name)
 {
 	m_health = health;

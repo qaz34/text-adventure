@@ -3,31 +3,53 @@
 #include "Character.h"
 #include "Strings.h"
 #include <iostream>
+#include <chrono>
 using namespace std;
+typedef vector<Character> targets;
+void command(String input, targets targetList, Character Player) {
+	if (input.toLower().subStringFind("attack") != nullptr)
+	{
+		int counter = 0;
+		for (Character target : targetList) {
+			if (input.toLower().subStringFind(target.name()))
+			{
+				Player.attack(target);
+				break;
+			}
+			counter++;
+		}
+		if (counter == targetList.size()) {
+			cout << "Not a target" << endl;
+		}
+	}
+	else if (input.toLower().subStringFind("equip") != nullptr)
+	{
+
+	}
+	else if (input.toLower().subStringFind("use") != nullptr)
+	{
+
+	}
+	else if (input.toLower().subStringFind("move") != nullptr)
+	{
+
+	}
+	else if (input.toLower().subStringFind("pickup") != nullptr)
+	{
+
+	}
+}
 int main()
 {
+	targets targetList;
 
-	String testString;
-	Character player(10, testString.Returnline());
-	Character enemy(1000, "jeffers the vile", 5103);
+	srand(time(NULL));
+	String Input;
+	Character player(10, Input.Returnline());
+	targetList.push_back(player);
 	while (true)
 	{
-		player.addWeapon("super sword of jeffry", weaponType::MELEE, ElementalDamage::PHYSICAL, 10000);
-		player.equipItem("basic sword");
-		player.addArmor("helm of jeffry", armorType::HEAD, { 3, {} });
-		player.equipItem("helm of jeffry");
-		player.addArmor("chest piece of jeffry", armorType::CHEST, { 2,{ElementalDamage::PHYSICAL} });
-		player.equipItem("chest piece of jeffry");
-		player.addArmor("boots of jeffry", armorType::FEET, { 50,{ ElementalDamage::PHYSICAL, ElementalDamage::EARTH, ElementalDamage::FIRE, ElementalDamage::WATER, ElementalDamage::WATER } });
-		enemy.addWeapon("enemy wand", weaponType::MAGIC, ElementalDamage::WIND, 10);
-		enemy.equipItem("enemy wand");
-		enemy.attack(player);
-		player.attack(enemy); 
-		
-
-		if (enemy.isDead()) {
-			player.gainExp(pow(enemy.getLevel(),2));
-		}
+		command(Input.Returnline(), targetList, player);
 		system("PAUSE");
 	}
 	return 0;
