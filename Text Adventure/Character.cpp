@@ -46,10 +46,10 @@ Character::Character(int health, String name, int level) : Character(health, nam
 	m_constantHealth = m_level / sqrt(m_health);
 }
 
-void Character::gainExp(int exp)
+void Character::gainExp(int enemyLevel)
 {
-	m_exp += exp;
-	int newLevel = floor(constantLvl * sqrt(exp));
+	m_exp += pow(enemyLevel,3);
+	int newLevel = floor(constantLvl * sqrt(m_exp));
 	if (m_level <= newLevel)
 	{
 		m_health = floor(pow(newLevel / m_constantHealth, 2));

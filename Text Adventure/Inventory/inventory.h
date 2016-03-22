@@ -1,8 +1,9 @@
 #pragma once
-#include "Strings.h"
-#include "items.h"
-#include "weapon.h"
-#include "armor.h"
+#include "../String/Strings.h"
+#include "Items.h"
+#include "Weapon.h"
+#include "Armor.h"
+#include <vector>
 #include <iostream>
 class Inventory
 {
@@ -19,8 +20,12 @@ public:
 	Inventory();
 	~Inventory();
 	void addWeapon(String name, weaponType wepType, ElementalDamage element, int damage);
+	void addWeapon(Item& item);
+	void addItem(Item& item);
 	void addArmor(String name, armorType armType, defenseInfo dInfo);
+	void addArmor(Item& item);
 	void equipItem(String itemName);
+	int size() { return (int)m_ItemList.size(); }
 	Item* getItem(int itemNameID);
 	Item* getItem(String itemName);
 	int getItemIndex(String itemName);

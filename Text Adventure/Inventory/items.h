@@ -1,5 +1,5 @@
 #pragma once
-#include "Strings.h"
+#include "../String/Strings.h"
 #include <vector>
 
 enum class ElementalDamage

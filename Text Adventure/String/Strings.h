@@ -38,9 +38,7 @@ public:
 		*this = temp;
 	}
 	String Returnline() {
-		char temp[40];
-		std::cin.getline(temp, 40);
-		*this = temp;
+		getline();
 		return *this;
 	}
 };

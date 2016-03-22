@@ -1,5 +1,5 @@
-#include "weapon.h"
-#include "Character.h"
+#include "Weapon.h"
+#include "../Character.h"
 Weapon::~Weapon()
 {
 }

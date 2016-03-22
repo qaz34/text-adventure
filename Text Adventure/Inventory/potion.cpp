@@ -1,5 +1,1 @@
-#include "potion.h"
-
-Potion::~Potion()
-{
-}
+#include "Potion.h"

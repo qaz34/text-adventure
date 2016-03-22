@@ -1,13 +1,13 @@
-#include "inventory.h"
+#include "Inventory.h"
 
 Inventory::Inventory()
 {
 	m_Equiptment[0] = new Armor("a sick haircut", armorType::HEAD, { 0,{} });
 	m_Equiptment[1] = new Armor("tattered shirt", armorType::CHEST, { 1,{} });
-	m_Equiptment[2] = new Armor("your bare skin", armorType::ARMS, { 0,{} });
+	m_Equiptment[2] = new Armor("bare skin", armorType::ARMS, { 0,{} });
 	m_Equiptment[3] = new Armor("tattered pants", armorType::LEGS, { 1,{} });
 	m_Equiptment[4] = new Armor("tattered shoes", armorType::FEET, { 1,{} });
-	m_Equiptment[5] = new Weapon("fist", weaponType::MELEE, ElementalDamage::PHYSICAL, 1);
+	m_Equiptment[5] = new Weapon("fist", weaponType::MELEE, ElementalDamage::PHYSICAL, 3);
 }
 
 Inventory::~Inventory()
@@ -26,7 +26,7 @@ void Inventory::addWeapon(String name, weaponType wepType, ElementalDamage eleme
 	bool Collected = false;
 	for (Item* item : m_ItemList)
 	{
-		if (item->getName() == name)
+		if (item->getName() == name || m_Equiptment[5]->getName() == name)
 		{
 			Collected = true;
 			break;
@@ -39,6 +39,37 @@ void Inventory::addWeapon(String name, weaponType wepType, ElementalDamage eleme
 	else
 	{
 		std::cout << "already have that weapon, no need for 2 that is just greedy!\n";
+	}
+}
+
+void Inventory::addWeapon(Item & item)
+{
+	bool Collected = false;
+	for (Item* items : m_ItemList)
+	{
+		if (items->getName() == item.getName() || m_Equiptment[5]->getName() == items->getName())
+		{
+			Collected = true;
+			break;
+		}
+	}
+	if (!Collected)
+	{
+		m_ItemList.push_back(&item);
+	}
+	else
+	{
+		std::cout << "already have that weapon, no need for 2 that is just greedy!\n";
+	}
+}
+
+void Inventory::addItem(Item & item)
+{
+	if (item.getType() <= 4) {
+		addArmor(item);
+	}
+	else {
+		addWeapon(item);
 	}
 }
 
@@ -73,7 +104,42 @@ void Inventory::addArmor(String name, armorType armType, defenseInfo dInfo)
 	}
 	else
 	{
-		
+		std::cout << "already have that Armor, no need for 2 that is just greedy!\n";
+	}
+}
+
+void Inventory::addArmor(Item & item)
+{
+	bool Collected = false;
+	for (Item* items : m_ItemList)
+	{
+		if (items->getName() == item.getName())
+		{
+			Collected = true;
+			break;
+		}
+	}
+	if (!Collected)
+	{
+		for (size_t i = 0; i < 6; i++)
+		{
+			if (m_Equiptment[i]->getName() == item.getName())
+			{
+				Collected = true;
+				break;
+			}
+		}
+		if (!Collected)
+		{
+			m_ItemList.push_back(&item);
+		}
+		else {
+			std::cout << "already have that Armor, no need for 2 that is just greedy!\n";
+		}
+	}
+	else
+	{
+		std::cout << "already have that Armor, no need for 2 that is just greedy!\n";
 	}
 }
 

@@ -1,6 +1,6 @@
 #pragma once
-#include "items.h"
-#include "Strings.h"
+#include "Items.h"
+#include "../String/Strings.h"
 
 enum class weaponType
 {
