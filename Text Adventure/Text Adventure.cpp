@@ -2,6 +2,7 @@
 //
 #include "Character.h"
 #include "String/Strings.h"
+#include "ItemList.h"
 #include <iostream>
 #include <chrono>
 using namespace std;
@@ -85,6 +86,15 @@ void command(String input, targets& targetList, Character& Player) {
 	else if (input.toLower().subStringFind("pickup") != nullptr)
 	{
 
+	}
+}
+void rollItems(Character& character) {
+	ItemList ItemList(character.getLevel());
+	for (size_t i = 0; i < 6; i++)
+	{
+		Item* item = ItemList.getItem(i, random(0, 6));
+		character.addItem(*item);
+		character.equipItem(item->getName());
 	}
 }
 int main()

@@ -151,6 +151,7 @@
     <ClInclude Include="Inventory\Items.h" />
     <ClInclude Include="Inventory\Potion.h" />
     <ClInclude Include="Inventory\Weapon.h" />
+    <ClInclude Include="ItemList.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="String\Strings.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Inventory\Items.cpp" />
     <ClCompile Include="Inventory\Potion.cpp" />
     <ClCompile Include="Inventory\Weapon.cpp" />
+    <ClCompile Include="ItemList.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="String\Strings.cpp" />

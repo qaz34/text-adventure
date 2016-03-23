@@ -54,11 +54,14 @@
     <ClInclude Include="Inventory\Potion.h">
       <Filter>Inventory</Filter>
     </ClInclude>
-    <ClInclude Include="Inventory\Items.h">
-      <Filter>Inventory</Filter>
-    </ClInclude>
     <ClInclude Include="Inventory\Inventory.h">
       <Filter>Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory\Items.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +94,9 @@
     </ClCompile>
     <ClCompile Include="String\Strings.cpp">
       <Filter>Source Files\String</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemList.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
