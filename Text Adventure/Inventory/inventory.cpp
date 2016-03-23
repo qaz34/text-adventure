@@ -2,12 +2,12 @@
 
 Inventory::Inventory()
 {
-	m_Equiptment[0] = new Armor("a sick haircut", armorType::HEAD, { 0,{} });
-	m_Equiptment[1] = new Armor("tattered shirt", armorType::CHEST, { 1,{} });
-	m_Equiptment[2] = new Armor("bare skin", armorType::ARMS, { 0,{} });
-	m_Equiptment[3] = new Armor("tattered pants", armorType::LEGS, { 1,{} });
-	m_Equiptment[4] = new Armor("tattered shoes", armorType::FEET, { 1,{} });
-	m_Equiptment[5] = new Weapon("fist", weaponType::MELEE, ElementalDamage::PHYSICAL, 3);
+	m_Equiptment[0] = new Armor("a sick haircut", armorType::HEAD, { 1,{} });
+	m_Equiptment[1] = new Armor("tattered shirt", armorType::CHEST, { 2,{} });
+	m_Equiptment[2] = new Armor("bare skin", armorType::ARMS, { 1,{} });
+	m_Equiptment[3] = new Armor("tattered pants", armorType::LEGS, { 2,{} });
+	m_Equiptment[4] = new Armor("tattered shoes", armorType::FEET, { 2,{} });
+	m_Equiptment[5] = new Weapon("fist", weaponType::MELEE, ElementalDamage::PHYSICAL, 5);
 }
 
 Inventory::~Inventory()
@@ -42,12 +42,12 @@ void Inventory::addWeapon(String name, weaponType wepType, ElementalDamage eleme
 	}
 }
 
-void Inventory::addWeapon(Item & item)
+void Inventory::addWeapon(Item* item)
 {
 	bool Collected = false;
 	for (Item* items : m_ItemList)
 	{
-		if (items->getName() == item.getName() || m_Equiptment[5]->getName() == items->getName())
+		if (items->getName() == item->getName() || m_Equiptment[5]->getName() == items->getName())
 		{
 			Collected = true;
 			break;
@@ -55,7 +55,7 @@ void Inventory::addWeapon(Item & item)
 	}
 	if (!Collected)
 	{
-		m_ItemList.push_back(&item);
+		m_ItemList.push_back(new Weapon(item->getName(), (weaponType)item->getType(), item->getInfo().m_resistances[0], item->getInfo().m_armor));
 	}
 	else
 	{
@@ -66,10 +66,10 @@ void Inventory::addWeapon(Item & item)
 void Inventory::addItem(Item & item)
 {
 	if (item.getType() <= 4) {
-		addArmor(item);
+		addArmor(&item);
 	}
 	else {
-		addWeapon(item);
+		addWeapon(&item);
 	}
 }
 
@@ -108,12 +108,12 @@ void Inventory::addArmor(String name, armorType armType, defenseInfo dInfo)
 	}
 }
 
-void Inventory::addArmor(Item & item)
+void Inventory::addArmor(Item * item)
 {
 	bool Collected = false;
 	for (Item* items : m_ItemList)
 	{
-		if (items->getName() == item.getName())
+		if (items->getName() == item->getName())
 		{
 			Collected = true;
 			break;
@@ -123,7 +123,7 @@ void Inventory::addArmor(Item & item)
 	{
 		for (size_t i = 0; i < 6; i++)
 		{
-			if (m_Equiptment[i]->getName() == item.getName())
+			if (m_Equiptment[i]->getName() == item->getName())
 			{
 				Collected = true;
 				break;
@@ -131,7 +131,7 @@ void Inventory::addArmor(Item & item)
 		}
 		if (!Collected)
 		{
-			m_ItemList.push_back(&item);
+			m_ItemList.push_back(new Armor(item->getName(), (armorType)item->getType(), item->getInfo()));
 		}
 		else {
 			std::cout << "already have that Armor, no need for 2 that is just greedy!\n";

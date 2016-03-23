@@ -22,7 +22,9 @@ protected:
 	damageInfo m_info;
 	
 public:
-
+	int random(int min, int max) {
+		return rand() % max + min;
+	}
 	Weapon(String name, weaponType wepType, ElementalDamage element, int damage) : Item(name, 5) {
 		m_info.m_wepType = wepType;
 		m_info.m_element = element;
@@ -30,7 +32,7 @@ public:
 	};
 	virtual void use(Character& target);
 	virtual defenseInfo getInfo() {
-		defenseInfo temp{ 0, {} };
+		defenseInfo temp{ m_info.m_damage, {m_info.m_element} };
 		return temp;
 	};
 

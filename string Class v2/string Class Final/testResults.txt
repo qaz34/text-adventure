@@ -1,0 +1,224 @@
+Test 1	Base Constructor		Success
+Test 2	operator == (TRUE)		Success
+Test 3	operator == (FALSE)		Success
+Test 4	Length				Success
+Test 5	char at positon			Success
+Test 6	operator =(string)		Success
+Test 7	operator =(cstring)		Success
+Test 8	to uppercase			Success
+Test 9	to lowercase			Success
+Test 10	substring find(success)		Success
+Test 11	substring find(fail)		Success
+Test 12	substring find(index success)	Success
+Test 13	substring find(index fail)	Success
+Test 14	substring replace(success)	Success
+Test 15	substring replace(fail)		Success
+Test 16	append(+, +=) 			Success
+Test 17	prepend cstring			Success
+Successful 100%
+
+
+
+Test 1	Base Constructor		Success
+Test 2	operator == (TRUE)		Success
+Test 3	operator == (FALSE)		Success
+Test 4	Length				Success
+Test 5	char at positon			Success
+Test 6	operator =(string)		Success
+Test 7	operator =(cstring)		Success
+Test 8	to uppercase			Success
+Test 9	to lowercase			Success
+Test 10	substring find(success)		Success
+Test 11	substring find(fail)		Success
+Test 12	substring find(index success)	Success
+Test 13	substring find(index fail)	Success
+Test 14	substring replace(success)	Success
+Test 15	substring replace(fail)		Success
+Test 16	append(+, +=) 			Success
+Test 17	prepend cstring			Success
+Successful 100%
+
+Test 1	Base Constructor		Success
+Test 2	operator == (TRUE)		Success
+Test 3	operator == (FALSE)		Success
+Test 4	Length				Success
+Test 5	char at positon			Success
+Test 6	operator =(string)		Success
+Test 7	operator =(cstring)		Success
+Test 8	to uppercase			Success
+Test 9	to lowercase			Success
+Test 10	substring find(success)		Success
+Test 11	substring find(fail)		Success
+Test 12	substring find(index success)	Success
+Test 13	substring find(index fail)	Success
+Test 14	substring replace(success)	Success
+Test 15	substring replace(fail)		Success
+Test 16	append(+, +=) 			Success
+Test 17	prepend cstring			Success
+Successful 100%
+
+Test 1	Base Constructor		Success
+Test 2	operator == (TRUE)		Success
+Test 3	operator == (FALSE)		Success
+Test 4	Length				Success
+Test 5	char at positon			Success
+Test 6	operator =(string)		Success
+Test 7	operator =(cstring)		Success
+Test 8	to uppercase			Success
+Test 9	to lowercase			Success
+Test 10	substring find(success)		Success
+Test 11	substring find(fail)		Success
+Test 12	substring find(index success)	Success
+Test 13	substring find(index fail)	Success
+Test 14	substring replace(success)	Success
+Test 15	substring replace(fail)		Success
+Test 16	append(+, +=) 			Success
+Test 1	Base Constructor		Success
+Test 2	operator == (TRUE)		Success
+Test 3	operator == (FALSE)		Success
+Test 4	Length				Success
+Test 5	char at positon			Success
+Test 6	operator =(string)		Success
+Test 7	operator =(cstring)		Success
+Test 8	to uppercase			Success
+Test 9	to lowercase			Success
+Test 10	substring find(success)		Success
+Test 11	substring find(fail)		Success
+Test 12	substring find(index success)	Success
+Test 13	substring find(index fail)	Success
+Test 14	substring replace(success)	Success
+Test 15	substring replace(fail)		Success
+Test 16	append(+, +=) 			Success
+Test 1	Base Constructor		Success
+Test 2	operator == (TRUE)		Success
+Test 3	operator == (FALSE)		Success
+Test 4	Length				Success
+Test 5	char at positon			Success
+Test 6	operator =(string)		Success
+Test 7	operator =(cstring)		Success
+Test 8	to uppercase			Success
+Test 9	to lowercase			Success
+Test 10	substring find(success)		Success
+Test 11	substring find(fail)		Success
+Test 12	substring find(index success)	Success
+Test 13	substring find(index fail)	Success
+Test 14	substring replace(success)	Success
+Test 15	substring replace(fail)		Success
+Test 16	append(+, +=) 			Success
+Test 17	prepend cstring			Success
+Successful 100%
+
+Test 1	Base Constructor		Success
+Test 2	operator == (TRUE)		Success
+Test 3	operator == (FALSE)		Success
+Test 4	Length				Success
+Test 5	char at positon			Success
+Test 6	operator =(string)		Success
+Test 7	operator =(cstring)		Success
+Test 8	to uppercase			Success
+Test 9	to lowercase			Success
+Test 10	substring find(success)		Success
+Test 11	substring find(fail)		Success
+Test 12	substring find(index success)	Success
+Test 13	substring find(index fail)	Success
+Test 14	substring replace(success)	Success
+Test 15	substring replace(fail)		Success
+Test 16	append(+, +=) 			Success
+Test 17	prepend cstring			Success
+Successful 100%
+
+Test 1	Base Constructor		Success
+Test 2	operator == (TRUE)		Success
+Test 3	operator == (FALSE)		Success
+Test 4	Length				Success
+Test 5	char at positon			Success
+Test 6	operator =(string)		Success
+Test 7	operator =(cstring)		Success
+Test 8	to uppercase			Success
+Test 9	to lowercase			Success
+Test 10	substring find(success)		Success
+Test 11	substring find(fail)		Success
+Test 12	substring find(index success)	Success
+Test 13	substring find(index fail)	Success
+Test 14	substring replace(success)	Success
+Test 15	substring replace(fail)		Success
+Test 16	append(+, +=) 			Success
+Test 17	prepend cstring			Success
+Successful 100%
+
+Test 1	Base Constructor		Success
+Test 2	operator == (TRUE)		Success
+Test 3	operator == (FALSE)		Success
+Test 4	Length				Success
+Test 5	char at positon			Success
+Test 6	operator =(string)		Success
+Test 7	operator =(cstring)		Success
+Test 8	to uppercase			Success
+Test 9	to lowercase			Success
+Test 10	substring find(success)		Success
+Test 11	substring find(fail)		Success
+Test 12	substring find(index success)	Success
+Test 13	substring find(index fail)	Success
+Test 14	substring replace(success)	Success
+Test 15	substring replace(fail)		Success
+Test 16	append(+, +=) 			Success
+Test 17	prepend cstring			Success
+Successful 100%
+
+Test 1	Base Constructor		Success
+Test 2	operator == (TRUE)		Success
+Test 3	operator == (FALSE)		Success
+Test 4	Length				Success
+Test 5	char at positon			Success
+Test 6	operator =(string)		Success
+Test 7	operator =(cstring)		Success
+Test 8	to uppercase			Success
+Test 9	to lowercase			Success
+Test 10	substring find(success)		Success
+Test 11	substring find(fail)		Success
+Test 12	substring find(index success)	Success
+Test 13	substring find(index fail)	Success
+Test 14	substring replace(success)	Success
+Test 15	substring replace(fail)		Success
+Test 16	append(+, +=) 			Success
+Test 17	prepend cstring			Success
+Successful 100%
+
+Test 1	Base Constructor		Success
+Test 2	operator == (TRUE)		Success
+Test 3	operator == (FALSE)		Success
+Test 4	Length				Success
+Test 5	char at positon			Success
+Test 6	operator =(string)		Success
+Test 7	operator =(cstring)		Success
+Test 8	to uppercase			Success
+Test 9	to lowercase			Success
+Test 10	substring find(success)		Success
+Test 11	substring find(fail)		Success
+Test 12	substring find(index success)	Success
+Test 13	substring find(index fail)	Success
+Test 14	substring replace(success)	Success
+Test 15	substring replace(fail)		Success
+Test 16	append(+, +=) 			Success
+Test 17	prepend cstring			Success
+Successful 100%
+
+Test 1	Base Constructor		Success
+Test 2	operator == (TRUE)		Success
+Test 3	operator == (FALSE)		Success
+Test 4	Length				Success
+Test 5	char at positon			Success
+Test 6	operator =(string)		Success
+Test 7	operator =(cstring)		Success
+Test 8	to uppercase			Success
+Test 9	to lowercase			Success
+Test 10	substring find(success)		Success
+Test 11	substring find(fail)		Success
+Test 12	substring find(index success)	Success
+Test 13	substring find(index fail)	Success
+Test 14	substring replace(success)	Success
+Test 15	substring replace(fail)		Success
+Test 16	append(+, +=) 			Success
+Test 17	prepend cstring			Success
+Successful 100%
+

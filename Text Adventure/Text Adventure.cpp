@@ -3,6 +3,7 @@
 #include "Character.h"
 #include "String/Strings.h"
 #include "ItemList.h"
+#include "Inventory\Weapon.h"
 #include <iostream>
 #include <chrono>
 using namespace std;
@@ -27,24 +28,27 @@ void battleRound(Character& Player, Character& target)
 		}
 	}
 	else {
+		
 		cout << target.name() << " died" << endl;
-		int randomNum = random(0,5);
+		int randomNum = random(0,6);
 		cout << target.name() << " dropped " << target.getEquippedItem(randomNum)->getName() << endl;
-		String input;
-		input.getline();
-		if (input.toLower().subStringFind("pickup") != nullptr)
-		{
-			Player.addItem(*target.getEquippedItem(randomNum));
+		while (true) {
+			String input;
+			input.getline();
+			if (input.toLower().subStringFind("pickup") != nullptr)
+			{
+				Player.addItem(*target.getEquippedItem(randomNum));
+				break;
+			}
+			else if (input.toLower().subStringFind("leave") != nullptr)
+			{
+				break;
+			}
+			else {
+				cout << "not an option" << endl;
+			}
+			Player.gainExp(target.getLevel());
 		}
-		else if (input.toLower().subStringFind("leave") != nullptr)
-		{
-
-		}
-		else {
-			cout << "not an option" << endl;
-		}
-		Player.gainExp(target.getLevel());
-
 	}
 }
 void command(String input, targets& targetList, Character& Player) {
@@ -66,18 +70,26 @@ void command(String input, targets& targetList, Character& Player) {
 			cout << "Not a target" << endl;
 		}
 	}
+	else if (input.toLower().subStringFind("display") != nullptr) {
+		if (input.toLower().subStringFind("inventory") != nullptr) {
+			Player.displayInventory();
+		}
+		else if (input.toLower().subStringFind("equipment") != nullptr) {
+			// broken
+			Player.displayEquipment();
+		}
+	}
 	else if (input.toLower().subStringFind("equip") != nullptr)
 	{
-
 		for (int i = 0; i < Player.invetorySize(); ++i) {
-			if (input.toLower().subStringFind(Player.itemName(i), 6) != nullptr) {
-				Player.equipItem(input.toLower().subStringFind(Player.itemName(i), 6));
+			if (input.toLower().subStringFind(Player.itemName(i).toLower(), 6) != nullptr) {
+				Player.equipItem(Player.itemName(i));
 			}
 		}
 	}
 	else if (input.toLower().subStringFind("use") != nullptr)
 	{
-
+		//to be implemented
 	}
 	else if (input.toLower().subStringFind("move") != nullptr)
 	{
@@ -85,8 +97,9 @@ void command(String input, targets& targetList, Character& Player) {
 	}
 	else if (input.toLower().subStringFind("pickup") != nullptr)
 	{
-
+		//to be implemented
 	}
+	
 }
 void rollItems(Character& character) {
 	ItemList ItemList(character.getLevel());
@@ -106,13 +119,12 @@ int main()
 	cout << "input name: ";
 	Character player(100, Input.Returnline());
 	targetList.push_back(&player);
-	player.addWeapon("sword", weaponType::MELEE, ElementalDamage::PHYSICAL, 5);
-	targetList.push_back(new Character(20, "evil dude", 2));
-	targetList[1]->addWeapon("evil sword", weaponType::MELEE, ElementalDamage::PHYSICAL, 25);
-	targetList[1]->equipItem("evil sword");
 	while (true)
 	{
-		cout << "input command\n";
+		if (targetList.size() <= 1) {
+			targetList.push_back(new Character(1, "evil dude", 10));
+			rollItems(*targetList[1]);
+		}
 		command(Input.Returnline(), targetList, player);
 	}
 	return 0;

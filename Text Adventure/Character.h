@@ -42,6 +42,12 @@ public:
 	int getLevel() { return m_level; }
 	Character(int health, String name);
 	Character(int health, String name, int exp);
+	void displayInventory() {
+		m_inventory.displayInventory();
+	}
+	void displayEquipment() {
+		m_inventory.displayEquipment();
+	}
 	void gainExp(int exp);
 	/*level = constant * sqrt(XP)*/
 	~Character();

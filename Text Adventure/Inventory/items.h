@@ -30,7 +30,9 @@ public:
 	~Item();
 
 	virtual void use(Character &target) = 0;
+
 	virtual defenseInfo getInfo() = 0;
+
 	int getType() { return m_type; }
 
 };
