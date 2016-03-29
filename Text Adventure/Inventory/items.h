@@ -26,13 +26,11 @@ public:
 		m_name = name;
 		m_type = type;
 	}
-	String getName() { return m_name; };
 	~Item();
-
+	String getName() { return m_name; };
 	virtual void use(Character &target) = 0;
-
 	virtual defenseInfo getInfo() = 0;
-
+	virtual void addStack(int ammount) = 0;
 	int getType() { return m_type; }
 
 };

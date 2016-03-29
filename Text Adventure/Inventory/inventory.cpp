@@ -24,17 +24,35 @@ Inventory::~Inventory()
 void Inventory::addWeapon(String name, weaponType wepType, ElementalDamage element, int damage)
 {
 	bool Collected = false;
+	bool Redone = false;
 	for (Item* item : m_ItemList)
 	{
 		if (item->getName() == name || m_Equiptment[5]->getName() == name)
 		{
-			Collected = true;
-			break;
+			if (item->getInfo().m_armor != damage && item->getName() == name)
+			{
+				deleteItem(name);
+				break;
+			}
+			else if (item->getInfo().m_armor != damage && m_Equiptment[5]->getName() == name) {
+				m_ItemList.push_back(new Weapon(name, wepType, element, damage));
+				equipItem(name);
+				deleteItem(name);
+				Redone = true;
+				break;
+			}
+			else {
+				Collected = true;
+				break;
+			}
 		}
 	}
-	if (!Collected)
+	if (!Collected && !Redone)
 	{
 		m_ItemList.push_back(new Weapon(name, wepType, element, damage));
+	}
+	else if (Redone) {
+		std::cout << "Weapon upgraded\n";
 	}
 	else
 	{
@@ -45,17 +63,36 @@ void Inventory::addWeapon(String name, weaponType wepType, ElementalDamage eleme
 void Inventory::addWeapon(Item* item)
 {
 	bool Collected = false;
+	bool Redone = false;
 	for (Item* items : m_ItemList)
 	{
-		if (items->getName() == item->getName() || m_Equiptment[5]->getName() == items->getName())
+		if (items->getName() == item->getName() || m_Equiptment[5]->getName() == item->getName())
 		{
-			Collected = true;
-			break;
+			if (items->getInfo().m_armor != item->getInfo().m_armor && items->getName() == item->getName())
+			{
+				deleteItem(items->getName());
+				break;
+			}
+			else if (items->getInfo().m_armor != item->getInfo().m_armor && m_Equiptment[5]->getName() == item->getName()) {
+				m_ItemList.push_back(new Weapon(item->getName(), (weaponType)item->getInfo().m_resistances[1], item->getInfo().m_resistances[0], item->getInfo().m_armor));
+				equipItem(item->getName());
+				deleteItem(item->getName());
+				Redone = true;
+				break;
+			}
+			else {
+				Collected = true;
+				break;
+			}
 		}
 	}
-	if (!Collected)
+
+	if (!Collected && !Redone)
 	{
-		m_ItemList.push_back(new Weapon(item->getName(), (weaponType)item->getType(), item->getInfo().m_resistances[0], item->getInfo().m_armor));
+		m_ItemList.push_back(new Weapon(item->getName(), (weaponType)item->getInfo().m_resistances[1], item->getInfo().m_resistances[0], item->getInfo().m_armor));
+	}
+	else if (Redone) {
+		std::cout << "Weapon upgraded\n";
 	}
 	else
 	{
@@ -68,79 +105,135 @@ void Inventory::addItem(Item & item)
 	if (item.getType() <= 4) {
 		addArmor(&item);
 	}
-	else {
+	else if(item.getType() == 5){
 		addWeapon(&item);
+	}
+	else if (item.getType() == 6) {
+		addHeaingPotion(&item);
 	}
 }
 
+void Inventory::addHeaingPotion(String name, int stack, int healing)
+{
+	bool collected = false;
+	for (Item* item : m_ItemList) {
+		if (item->getName() == name) {
+			item->addStack(stack);
+			collected = true;
+		}
+	}
+	if (!collected) {
+		m_ItemList.push_back(new HealingPotion(name, stack, healing));
+	}
+}
+void Inventory::addHeaingPotion(Item* item)
+{
+	bool collected = false;
+	for (Item* items : m_ItemList) {
+		if (items->getName() == item->getName()) {
+			items->addStack(1);
+			collected = true;
+		}
+	}
+	if (!collected) {
+		m_ItemList.push_back(new HealingPotion(item->getName(), 1, item->getInfo().m_armor));
+	}
+}
 void Inventory::addArmor(String name, armorType armType, defenseInfo dInfo)
 {
 	bool Collected = false;
+	bool Redone = false;
 	for (Item* item : m_ItemList)
 	{
-		if (item->getName() == name)
+		for (size_t i = 0; i < 5; i++)
 		{
-			Collected = true;
-			break;
-		}
-	}
-	if (!Collected)
-	{
-		for (size_t i = 0; i < 6; i++)
-		{
-			if (m_Equiptment[i]->getName() == name)
+			if (item->getName() == name || m_Equiptment[i]->getName() == item->getName())
 			{
-				Collected = true;
-				break;
+				if (item->getInfo().m_armor != dInfo.m_armor)
+				{
+					deleteItem(name);
+					break;
+				}
+				else if (m_Equiptment[i]->getInfo().m_armor != dInfo.m_armor) {
+					m_ItemList.push_back(new Armor(name, armType, dInfo));
+					equipItem(name);
+					deleteItem(name);
+					Redone = true;
+					break;
+				}
+				else {
+					Collected = true;
+					break;
+				}
+
 			}
 		}
-		if (!Collected)
-		{
-			m_ItemList.push_back(new Armor(name, armType, dInfo));
-		}
-		else {
-			std::cout << "already have that Armor, no need for 2 that is just greedy!\n";
-		}
 	}
-	else
+
+	if (!Collected && !Redone)
 	{
+		m_ItemList.push_back(new Armor(name, armType, dInfo));
+	}
+	else if (Redone) {
+		std::cout << "Armor upgraded\n";
+	}
+	else {
 		std::cout << "already have that Armor, no need for 2 that is just greedy!\n";
 	}
 }
+
 
 void Inventory::addArmor(Item * item)
 {
 	bool Collected = false;
+	bool Redone = false;
+	bool BREAK = false;
 	for (Item* items : m_ItemList)
 	{
-		if (items->getName() == item->getName())
+		for (size_t i = 0; i < 5; i++)
 		{
-			Collected = true;
+			if (item->getName() == items->getName() || m_Equiptment[i]->getName() == item->getName())
+			{
+				if (item->getInfo().m_armor != items->getInfo().m_armor && items->getName() == item->getName())
+				{
+					deleteItem(item->getName());
+					BREAK = true;
+					break;
+				}
+				else if (item->getInfo().m_armor != m_Equiptment[i]->getInfo().m_armor && m_Equiptment[i]->getName() == item->getName()) {
+					m_ItemList.push_back(new Armor(item->getName(), (armorType)item->getType(), item->getInfo()));
+					equipItem(item->getName());
+					deleteItem(item->getName());
+					
+					Redone = true;
+					BREAK = true;
+					break;
+				}
+				else {
+					Collected = true;
+					BREAK = true;
+					break;
+				}
+
+			}
+			
+		}
+		if (BREAK) {
 			break;
 		}
 	}
-	if (!Collected)
+
+	if (!Collected && !Redone)
 	{
-		for (size_t i = 0; i < 6; i++)
-		{
-			if (m_Equiptment[i]->getName() == item->getName())
-			{
-				Collected = true;
-				break;
-			}
-		}
-		if (!Collected)
-		{
-			m_ItemList.push_back(new Armor(item->getName(), (armorType)item->getType(), item->getInfo()));
-		}
-		else {
-			std::cout << "already have that Armor, no need for 2 that is just greedy!\n";
-		}
+		m_ItemList.push_back(new Armor(item->getName(), (armorType)item->getType(), item->getInfo()));
 	}
-	else
-	{
+	else if (Redone) {
+		std::cout << "Armor upgraded\n";
+	}
+	else {
 		std::cout << "already have that Armor, no need for 2 that is just greedy!\n";
 	}
+
 }
 
 void Inventory::equipItem(String itemName)
@@ -149,6 +242,9 @@ void Inventory::equipItem(String itemName)
 	m_ItemList.push_back(m_Equiptment[type]);
 	m_Equiptment[type] = getItem(itemName);
 	m_ItemList.erase(m_ItemList.begin() + getItemIndex(itemName));
+}
+void Inventory::deleteItem(String Name) {
+	m_ItemList.erase(m_ItemList.begin() + getItemIndex(Name));
 }
 
 Item * Inventory::getItem(int itemNameID)

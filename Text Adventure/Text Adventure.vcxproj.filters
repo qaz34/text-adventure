@@ -22,7 +22,7 @@
     <Filter Include="Header Files\String">
       <UniqueIdentifier>{14b7578b-6e87-4a00-abb7-024cdac04c90}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Inventory">
+    <Filter Include="Header Files\Inventory">
       <UniqueIdentifier>{e3244677-7b3d-4ab5-8b49-7543f17dc00a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -46,22 +46,28 @@
       <Filter>Header Files\String</Filter>
     </ClInclude>
     <ClInclude Include="Inventory\Armor.h">
-      <Filter>Inventory</Filter>
+      <Filter>Header Files\Inventory</Filter>
     </ClInclude>
     <ClInclude Include="Inventory\Weapon.h">
-      <Filter>Inventory</Filter>
+      <Filter>Header Files\Inventory</Filter>
     </ClInclude>
     <ClInclude Include="Inventory\Potion.h">
-      <Filter>Inventory</Filter>
+      <Filter>Header Files\Inventory</Filter>
     </ClInclude>
     <ClInclude Include="Inventory\Inventory.h">
-      <Filter>Inventory</Filter>
+      <Filter>Header Files\Inventory</Filter>
     </ClInclude>
     <ClInclude Include="ItemList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Inventory\Items.h">
+    <ClInclude Include="Enemys.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HealingPotion.h">
+      <Filter>Header Files\Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory\Items.h">
+      <Filter>Header Files\Inventory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +103,12 @@
     </ClCompile>
     <ClCompile Include="ItemList.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemys.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HealingPotion.cpp">
+      <Filter>Source Files\Inventory</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

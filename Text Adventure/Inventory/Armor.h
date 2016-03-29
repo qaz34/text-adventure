@@ -18,8 +18,9 @@ protected:
 	defenseInfo m_info;
 public:
 	Armor(String name, armorType type, defenseInfo dInfo);
-	virtual defenseInfo getInfo();
-	virtual void use(Character& target);
+	defenseInfo getInfo();
+	void use(Character& target);
+	void addStack(int ammount) {}
 	~Armor();
 };
 

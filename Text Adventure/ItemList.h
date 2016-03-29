@@ -2,6 +2,7 @@
 #include "Inventory\Items.h"
 #include "Inventory\Weapon.h"
 #include "Inventory\Armor.h"
+#include "HealingPotion.h"
 class ItemList
 {
 public:
@@ -11,11 +12,12 @@ public:
 	Item* Arms[7];
 	Item* Legs[7];
 	Item* Feet[7];
-	ItemList(int level) {
+	Item* healthPotions[7];
+	ItemList(int level) : ItemList(){
 
 		weapons[0] = new Weapon("Fire Sword", weaponType::MELEE, ElementalDamage::FIRE, (int)pow(level, 1.5) * level / 1.25);
 		weapons[1] = new Weapon("Earth Fists", weaponType::MELEE, ElementalDamage::EARTH, (int)pow(level, 2.3));
-		weapons[2] = new Weapon("Sword of Jeffry", weaponType::MELEE, ElementalDamage::WIND, (int)pow(level, 2.7) - 2);
+		weapons[2] = new Weapon("Sword of Jeffry", weaponType::MELEE, ElementalDamage::WIND, (int)pow(level + 1, 2));
 		weapons[3] = new Weapon("Handgun of Water", weaponType::RANGED, ElementalDamage::WATER, level * 3);
 		weapons[4] = new Weapon("Wand of Mistical Fire", weaponType::MAGIC, ElementalDamage::FIRE, (int)pow(level, 2));
 		weapons[5] = new Weapon("Power Sword", weaponType::MELEE, ElementalDamage::PHYSICAL, (int)pow(level, 3));
@@ -62,6 +64,23 @@ public:
 		Feet[6] = new Armor("Reactive Boots", armorType::FEET, { (int)pow(level, 2.1),{ ElementalDamage::PHYSICAL } });
 		
 	}
+	ItemList() {
+		healthPotions[0] = new HealingPotion("Normal Potion", 1, 10);
+		healthPotions[1] = new HealingPotion("Better Potion", 1, 20);
+		healthPotions[2] = new HealingPotion("Great Potion", 1, 30);
+		healthPotions[3] = new HealingPotion("Super Potion", 1, 50);
+		healthPotions[4] = new HealingPotion("Mega Potion", 1, 80);
+		healthPotions[5] = new HealingPotion("Ultra Potion", 1, 130);
+		healthPotions[6] = new HealingPotion("Master Potion", 1, 210);
+		for (int i = 0; i < 7; ++i) {
+			weapons[i] = nullptr;
+			Helmets[i] = nullptr;
+			Chest[i] = nullptr;
+			Arms[i] = nullptr;
+			Legs[i] = nullptr;
+			Feet[i] = nullptr;
+		}
+	}
 	~ItemList() {
 		for (int i = 0; i < 7; ++i) {
 			delete weapons[i];
@@ -70,6 +89,7 @@ public:
 			delete Arms[i];
 			delete Legs[i];
 			delete Feet[i];
+			delete healthPotions[i];
 		}
 	}
 	Item* getItem(int type, int index) {
@@ -87,6 +107,8 @@ public:
 			return Feet[index];
 		case 5:
 			return weapons[index];
+		case 6:
+			return healthPotions[index];
 		default:
 			break;
 		}

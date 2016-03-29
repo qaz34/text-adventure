@@ -3,6 +3,7 @@
 #include "Items.h"
 #include "Weapon.h"
 #include "Armor.h"
+#include "../HealingPotion.h"
 #include <vector>
 #include <iostream>
 class Inventory
@@ -37,6 +38,8 @@ public:
 	void addWeapon(String name, weaponType wepType, ElementalDamage element, int damage);
 	void addWeapon(Item* item);
 	void addItem(Item& item);
+	void addHeaingPotion(String name, int stack, int healing);
+	void addHeaingPotion(Item *item);
 	void addArmor(String name, armorType armType, defenseInfo dInfo);
 	void addArmor(Item* item);
 	void equipItem(String itemName);
@@ -46,15 +49,23 @@ public:
 	void displayInventory() {
 		std::cout << "Name\t\t\tStat\tElements\n";
 		for (Item* item : m_ItemList) {
-			std::cout << tabbing(item->getName()) << item->getInfo().m_armor  << '\t'  << item->getInfo().m_resistances.size()<<  '\n';
+			if (item->getType() == 5)
+			{
+				std::cout << tabbing(item->getName()) << item->getInfo().m_armor << '\t' << "1" << '\n';
+			}
+			else {
+				std::cout << tabbing(item->getName()) << item->getInfo().m_armor << '\t' << item->getInfo().m_resistances.size() << '\n';
+			}
 		}
 	}
 	void displayEquipment() {
 		std::cout << "Name\t\t\tStat\tElements\n";
 		for (int i = 0; i < 6; ++i) {
+			
 			std::cout << tabbing(m_Equiptment[i]->getName()) << m_Equiptment[i]->getInfo().m_armor << '\t' << m_Equiptment[i]->getInfo().m_resistances.size() << '\n';
 		}
 	}
+	void deleteItem(String Name);
 	int getItemIndex(String itemName);
 	Item* getEquipItem(int index) { return m_Equiptment[index]; }
 };

@@ -1,6 +1,8 @@
 #include "Character.h"
 
-void Character::changeHealth(damageInfo dInfo)
+
+
+void Character::changeHealth(damageInfo& dInfo)
 {
 	int resistant = 0;
 	int armor = 0;
@@ -18,7 +20,7 @@ void Character::changeHealth(damageInfo dInfo)
 		}
 	}
 	float damageReduction = (float)100 / (100 + armor);
-	m_health -= int(dInfo.m_damage * damageReduction * (1+(1 - ((float)1 / (1 + resistant)))));
+	m_health -= int(dInfo.m_damage * damageReduction * ((float)15 / (float)(15 + resistant)));
 	if (m_health <= 0) {
 		m_health = 0;
 	}
@@ -29,12 +31,16 @@ void Character::attack(Character & target)
 	m_inventory.getEquipItem(5)->use(target);
 }
 
-
+void Character::usePotion(Character & target, String name)
+{
+	m_inventory.getItem(name)->use(target);
+}
 Character::Character(int health, String name)
 {
-	m_health = health;
+	m_health = m_maxHealth = health;
 	m_name = name;
 	m_level = 1;
+	m_x = m_y = 0;
 	m_exp = 10;
 	m_constantHealth = m_level / sqrt(m_health);
 }
@@ -48,17 +54,17 @@ Character::Character(int health, String name, int level) : Character(health, nam
 
 void Character::gainExp(int enemyLevel)
 {
-	m_exp += pow(enemyLevel,3);
+	m_exp += pow(enemyLevel,2);
 	int newLevel = floor(constantLvl * sqrt(m_exp));
-	if (m_level <= newLevel)
+	if (m_level < newLevel)
 	{
-		m_health = floor(pow(newLevel / m_constantHealth, 2));
+		m_maxHealth = m_health = floor(pow(newLevel / m_constantHealth, 2));
+		std::cout << "Level up! you are now level " << newLevel << " and have a max health of " << m_maxHealth << std::endl;
 		m_level = newLevel;
 	}
 	else if (newLevel == 0) {
 		m_level = 1;
-		m_health = floor(pow(m_level / m_constantHealth, 2));
-
+		m_maxHealth = m_health = floor(pow(m_level / m_constantHealth, 2));
 	}
 }
 
